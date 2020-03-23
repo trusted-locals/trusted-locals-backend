@@ -1,10 +1,10 @@
-#End Points
+# End Points
 
 
-##1. /User [POST] 
+## 1. /User [POST] 
     creates a user with the given parameters
 
-###required parameters
+### required parameters
 ```javascript
         {   
             name:string,
@@ -14,7 +14,7 @@
         }
 ```
 
-###return
+### return
 
 ```javascript
     status code=201
@@ -22,7 +22,7 @@
         success:true
     }
 ```
-###error
+### error
 ```javascript
     status code=400
     {
@@ -30,10 +30,10 @@
     }
 ```
 
-##2. /User/login [POST] 
+## 2. /User/login [POST] 
     returns a jwt token for further authentication
 
-###required parameters
+### required parameters
 ```javascript
         {   
             name:string,
@@ -41,7 +41,7 @@
         }
 ```
 
-###return
+### return
 
 ```javascript
     status code=200
@@ -50,7 +50,7 @@
         token: string
     }
 ```
-###error
+### error
 ```javascript
     status code=401
     {
@@ -58,8 +58,8 @@
     }
 ```
 
-##3./test [GET]
+## 3./test [GET]
 for testing if authentication is working
-###Required Header
+### Required Header
     Authorization=jwt 
 
