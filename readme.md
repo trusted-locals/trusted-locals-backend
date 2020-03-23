@@ -30,7 +30,7 @@
     }
 ```
 
-##2. /User/login
+##2. /User/login [POST] 
     returns a jwt token for further authentication
 
 ###required parameters
@@ -58,7 +58,7 @@
     }
 ```
 
-##3./test
+##3./test [GET]
 for testing if authentication is working
 ###Required Header
     Authorization=jwt 
