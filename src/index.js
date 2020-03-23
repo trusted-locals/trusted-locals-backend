@@ -18,14 +18,14 @@ app.post("/user",(req,res)=>{
     registerUser(req,res)
 });
 
-app.get("/user/:username",(req,res)=>{
+app.post("/user/login",(req,res)=>{
     signIn(req,res)
 })
 
 app.get("/test",passport.authenticate('jwt', { session: false}),(req,res)=>{
     var token = getToken(req.headers);
     if (token) {
-        res.send("heil")
+        res.send("authenticated successfully")
     } else {
         res.send("error")
     }

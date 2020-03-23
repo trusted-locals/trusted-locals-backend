@@ -16,10 +16,10 @@ async function registerUser(req, res, next) {
                 country: country,
                 email: email
             })
-            res.status(201).send(user)
+            res.status(201).json({success:true})
         } catch (error) {
             console.log(error);
-            res.status(400).send(error);
+            res.status(400).send({success:false});
         }
     }
 }
@@ -28,11 +28,11 @@ async function signIn(req, res, next) {
     try {
         const user = await User.findOne({
             where: {
-                name: req.params.username//change to username
+                name: req.body.name//change to username
             }
         })
         if (!user) {
-            return res.status(401).send({ message: 'Authentication failed. User not found.' })
+            return res.status(401).send({ success: false, message: 'Authentication failed. User not found.' })
         }
         user.comparePassword(req.body.password, (err, isMatch) => {
             if (isMatch && !err) {
