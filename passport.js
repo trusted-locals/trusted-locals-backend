@@ -1,18 +1,19 @@
 const JwtStrategy = require('passport-jwt').Strategy,
-    ExtractJwt = require('passport-jwt').ExtractJwt;
+  ExtractJwt = require('passport-jwt').ExtractJwt;
 
-// load up the user model
-const User = require('./database/models').User;
+const client = require("./src/helpers/mongo")
 
-module.exports = function(passport) {
+module.exports = function (passport) {
   const opts = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('JWT'),
     secretOrKey: 'nodeauthsecret',
   };
-  passport.use('jwt', new JwtStrategy(opts, function(jwt_payload, done) {
-    User
-      .findByPk(jwt_payload.id)
-      .then((user) => { return done(null, user); })
-      .catch((error) => { return done(error, false); });
+  passport.use('jwt', new JwtStrategy(opts, async function (jwt_payload, done) {
+    done(null, {
+      name: jwt_payload.name,
+      id: jwt_payload._id,
+      email: jwt_payload.email,
+      country: jwt_payload.country
+    })
   }));
 };
