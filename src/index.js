@@ -3,9 +3,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const { registerUser, signIn } = require('./auth/auth');
 const passport = require('passport');
-const { getToken } = require('./helpers/helpers');
+const { getToken } = require('./utils/helpers');
 require('../passport')(passport);
-const client = require("./helpers/mongo")
+const client = require("./utils/mongo")
 
 client.connect(err => {
   if (err) {

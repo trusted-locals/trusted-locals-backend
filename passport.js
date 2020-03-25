@@ -1,7 +1,7 @@
 const JwtStrategy = require('passport-jwt').Strategy,
   ExtractJwt = require('passport-jwt').ExtractJwt;
 
-const client = require("./src/helpers/mongo")
+const client = require("./src/utils/mongo")
 
 module.exports = function (passport) {
   const opts = {
