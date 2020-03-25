@@ -1,8 +1,8 @@
 const { Request, Response, NextFunction } = require('express')
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const client = require("../helpers/mongo");
-const { hashPassword, comparePassword } = require("../helpers/helpers")
+const client = require("../utils/mongo");
+const { hashPassword, comparePassword } = require("../utils/helpers")
 
 async function registerUser(req, res, next) {
     const { name, email, country, password } = req.body
