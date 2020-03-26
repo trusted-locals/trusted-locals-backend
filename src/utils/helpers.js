@@ -25,5 +25,9 @@ const comparePassword = function (password1, password2,cb) {
   });
 }
 
+const validateEmail=function (email) {
+  const mailFormat=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/;
+  return mailFormat.test(email)
+}
 
-module.exports = { getToken, hashPassword, comparePassword }
+module.exports = { getToken, hashPassword, comparePassword ,validateEmail }

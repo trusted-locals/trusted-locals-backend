@@ -36,7 +36,7 @@
 ### required parameters
 ```javascript
         {   
-            name:string,
+            email:string,
             password:string
         }
 ```
