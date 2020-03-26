@@ -19,7 +19,7 @@ client.connect((err) => {
     console.log(err)
   } else {
     const app = express();
-    const port = 8080;
+    const port = process.env.NODE_ENV === 'production'?process.env.PORT:process.env.DEV_PORT
     db=client.db(database)
 
     app.use(bodyParser.json());
