@@ -2,13 +2,13 @@
   "name": "trusted-locals-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "build/src/index.js",
+  "main": "build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "build": "tsc",
     "prestart": "npm run build",
-    "start": "env NODE_ENV=production node .",
+    "start": "NODE_ENV=production node .",
     "dev": "nodemon ./src/index.ts"
   },
   "author": "",
