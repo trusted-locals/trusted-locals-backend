@@ -4,7 +4,7 @@ import cors from 'cors'
 import { registerUser, signIn } from "./routes/auth/auth";
 import passport from "passport";
 import { getToken } from "./utils/helpers";
-import { passportConfig } from '../passport'
+import { passportConfig } from './passport'
 passportConfig(passport);
 
 // import { client, database } from './utils/mongo'

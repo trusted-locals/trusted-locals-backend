@@ -1,9 +1,9 @@
-import { Schema, MongooseDocument, Document, model } from "mongoose";
+import { Schema, Document, model } from "mongoose";
 import { hashPassword } from "../../utils/helpers"
 
 
 export interface IUser extends Document {
-    username:string,
+    username: string,
     email: string,
     name: string,
     password: string,
@@ -12,11 +12,11 @@ export interface IUser extends Document {
 }
 
 export const UserSchema = new Schema({
-    username:{
-        type:String,
-        unique:true,
-        index:true,
-        required:true
+    username: {
+        type: String,
+        unique: true,
+        index: true,
+        required: true
     },
     email: {
         type: String,
@@ -38,9 +38,9 @@ export const UserSchema = new Schema({
     createdAt: {
         type: Date
     }
-},{
-    toJSON:{
-        transform (doc,ret) {
+}, {
+    toJSON: {
+        transform(doc, ret) {
             delete ret.password
         }
     }
@@ -54,4 +54,4 @@ UserSchema.pre<IUser>("save", function (next) {
 
 
 
-export const User=model<IUser>("user",UserSchema)
+export const User = model<IUser>("user", UserSchema)
