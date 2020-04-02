@@ -11,7 +11,7 @@
         cityID: number;
         profileImageURL?: string;
         createdAt: Date;
-        rating: number;
+        rating: number | null;
     }
 ```
 
@@ -55,7 +55,7 @@
             }
             profileImageURL?: string;
             postsCount: number;
-            rating: number;
+            rating: number | null;
         }
     }
 ```
@@ -127,7 +127,7 @@ Does not require auth header.
         firstName?: string;
         lastName?: string;
         profileImageURL?: string;
-        rating: number;
+        rating: number | null;
         country: {
             name: string;
         }
@@ -137,7 +137,6 @@ Does not require auth header.
         }
         profileImageURL?: string;
         postsCount: number;
-        rating: number;
     }
 ```
 

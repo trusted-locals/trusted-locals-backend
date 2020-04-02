@@ -4,13 +4,15 @@
 
 ```javascript
     type Post {
+      postID: number;
       authorID: number; // User ID
       cityID: number;
       title: string;
       text: string;
       imageURL?: string;
       createdAt: Date;
-      rating: number;
+      rating: number | null;
+      category: Array<'news' | 'medical_supply' | 'grocery' | 'advice'>
     }
 ```
 
@@ -18,7 +20,7 @@
 
 ## 1. /posts [GET]
 
-Does not require auth header.
+Does not require auth header. _But_, if there is one, the field `userCanVote` should be set to either true or false.
 
 ### required parameters:
 
@@ -32,20 +34,44 @@ Does not require auth header.
 ### return
 
 ```javascript
-    status code=200
-    {
-      author: {
-        first_name?: string;
-        last_name?: string;
-        username: string;
-        profileImageURL?: string;
+    status code=200;
+    posts: {
+      [postID: number]: {
+        author: {
+          first_name?: string;
+          last_name?: string;
+          username: string;
+          profileImageURL?: string;
+        }
+        title: string;
+        text: string;
+        imageURL?: string;
+        createdAt: number;
+        rating: number | null;
+        userCanVote: boolean;
       }
-      title: string;
-      text: string;
-      imageURL?: string;
-      createdAt: Date;
-      rating: number;
     }
+```
+
+### error
+
+```javascript
+    status code=400
+    {
+       success: false,
+       errorMessage: String
+    }
+```
+
+## 2. /own-posts [GET]
+
+Requires auth header. Delivers an array of post IDs posted by the user.
+
+### return
+
+```javascript
+    status code=200
+    postIDs: number[]
 ```
 
 ### error
